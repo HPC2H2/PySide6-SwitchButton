@@ -3,10 +3,7 @@ from PySide6.QtCore import (
     Qt,
     QRect,
     )
-from PySide6.QtGui import (
-    QPen,
-    QPainter,
-    )
+from PySide6.QtGui import QPainter
  
  
 class SwitchButton(QAbstractButton):
@@ -64,11 +61,11 @@ class SwitchButton(QAbstractButton):
             # 画滑块
             painter.setBrush(self.color_keymap["slider"])
             slider_width = min(self.width(), self.height() - slider_space * 2)
-            slider_rect = QRect(slider_space, slider_space, slider_width, slider_width)
+            slider_rect = QRect(self.width() - slider_width - slider_space, slider_space, slider_width, slider_width)
             painter.drawEllipse(slider_rect)
 
             #画文字
-            text_rect = QRect(slider_width + slider_space, 0, self.width() - slider_width, self.height())
+            text_rect = QRect(0, 0, self.width() - slider_width, self.height())
             painter.setPen(self.color_keymap["text"])
             painter.setBrush(Qt.BrushStyle.NoBrush)
             painter.drawText(text_rect, Qt.AlignmentFlag.AlignCenter,self.on_text)
@@ -84,11 +81,11 @@ class SwitchButton(QAbstractButton):
             # 画滑块
             painter.setBrush(self.color_keymap["slider"])
             slider_width = min(self.width(), self.height() - slider_space * 2)
-            slider_rect = QRect(self.width() - slider_width - slider_space, slider_space, slider_width, slider_width)
+            slider_rect = QRect(slider_space, slider_space, slider_width, slider_width)
             painter.drawEllipse(slider_rect)
 
             #画文字
-            text_rect = QRect(0, 0, self.width() - slider_width, self.height())
+            text_rect = QRect(slider_width + slider_space, 0, self.width() - slider_width, self.height())
             painter.setPen(self.color_keymap["text"])
             painter.setBrush(Qt.BrushStyle.NoBrush)
             painter.drawText(text_rect, Qt.AlignmentFlag.AlignCenter,self.off_text)
