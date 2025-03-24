@@ -19,7 +19,8 @@ class SwitchButton(QAbstractButton):
         # 鼠标样式
         self.setCursor(Qt.CursorShape.PointingHandCursor)
 
-        # PySide6 PySide6.QtGui.QBrush() 的 setColor() 只能用 GlobalColor 类中预定义的颜色
+        # PySide6 PySide6.QtGui.QBrush() 的 setColor() 可以用 GlobalColor 类中预定义的颜色
+        # 也可以用QColor，如QColor("#577BC1")
         self.color_keymap = {
             "slider": Qt.GlobalColor.white,
             "text": Qt.GlobalColor.white,
